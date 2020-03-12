@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from 'src/components/header';
-import SignIn from 'src/pages/sing-in';
+import SignIn from 'src/pages/sign-in';
+import SignUp from "src/pages/sign-up";
 import * as Actions from './actions';
 import './style.css';
+
 
 class App extends Component {
   render() {
@@ -11,6 +13,7 @@ class App extends Component {
       <div>
         <Header />
         <SignIn />
+        <SignUp />
         <div className="footer">
           count = {this.props.counter}
           <button
