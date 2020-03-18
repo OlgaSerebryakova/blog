@@ -1,0 +1,37 @@
+.wrapperSignUp {
+  position: relative;
+  background: aliceblue;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-left: -250px;
+  background: #fff;
+  width: 500px;
+  box-shadow: 0 0 35px rgba(0,0,0, .4);
+  padding: 40px 40px 40px 60px;
+  border-radius: 6px;
+  min-height: 560px;
+  z-index: 10;
+}
+
+.buttonRegister {
+  background: #27aae1;
+  padding: 7px 25px;
+  border: none;
+  font-size: 14px;
+  color: #fff;
+  position: relative;
+  font-weight: 600;
+  outline: none;
+  border-radius: 30px;
+  margin: 10px 0;
+}
+
+.buttonRegister:hover {
+  background: #337ab7;
+}

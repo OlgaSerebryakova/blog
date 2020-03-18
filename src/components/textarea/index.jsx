@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import style from "src/components/input/style.css";
+import style from "src/components/textarea/style.css";
 
-export default class Input extends Component {
+export default class Textarea extends Component {
   onChange = (e) => {
     const value = e.target.value;
     const { id, onChange } = this.props;
@@ -13,8 +13,8 @@ export default class Input extends Component {
     const { value } = this.props;
 
     return (
-      <input
-        className={style.inputForm}
+      <textarea
+        className={style.textareaForm}
         type="text"
         value={value}
         onChange={this.onChange}

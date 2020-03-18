@@ -1,16 +1,13 @@
-
 const initState = {
   dataForm: {
-    login: '',
-    email: '',
-    firstName: '',
-    password: ''
+    title: '',
+    bodyPost: ''
   }
 };
 
-export default function singUpReducer(state = initState, action) {
+export default function newPostReducer(state = initState, action) {
   switch (action.type) {
-    case 'SIGN-UP_CHANGE_DATA_FORM' :
+    case 'NEW_POST_CHANGE_DATA_FORM':
       return {
         ...state,
         dataForm: {

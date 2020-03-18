@@ -1,0 +1,21 @@
+.wrapperSignIn {
+  position: relative;
+  background: aliceblue;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-left: -150px;
+  background: #fff;
+  width: 300px;
+  box-shadow: 0 0 35px rgba(0,0,0, .4);
+  padding: 40px 40px 40px 60px;
+  border-radius: 6px;
+  min-height: 560px;
+  z-index: 10;
+}
+

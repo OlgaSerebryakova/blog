@@ -1,3 +1,33 @@
 .wrapper {
-  border: 1px solid red;
+  background-color: #231F20;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Lato', sans-serif;
+}
+
+.wrapperUl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapperUl li {
+  display: inline-flex;
+}
+
+.link a {
+  display: inline-flex;
+  color: white;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link a:hover {
+  color: #27aae1;
+}
+
+.link:hover {
+  background-color: #111;
 }
