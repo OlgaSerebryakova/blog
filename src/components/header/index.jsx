@@ -12,10 +12,18 @@ export default class Header extends Component {
             <li className={style.link}><Link to="/new-post">Новый пост</Link></li>
           </ul>
 
+        {!this.props.user
+          ?
           <ul className={style.wrapperUl}>
             <li className={style.link}><Link to="sign-in">Вход</Link></li>
             <li className={style.link}><Link to="sign-up">Регистрация</Link></li>
           </ul>
+          :
+          <ul className={style.wrapperUl}>
+            <li className={style.auth}>Привет, {this.props.user.login}</li>
+            <li className={style.auth} onClick={this.props.signOut}>Выход</li>
+          </ul>
+        }
       </div>
     )
   }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import { push } from 'connected-react-router';
 import Input from 'src/components/input';
 import Button from "src/components/button";
 import style from './style.css';
@@ -14,8 +13,9 @@ class SignUp extends Component {
     changeFieldAction: PropTypes.func.isRequired
   };
 
-  onClick = () => {
-    this.props.push('/')
+  onSubmit = () => {
+    const { dataForm } = this.props;
+    this.props.signUpAction(dataForm);
   };
 
   render() {
@@ -54,7 +54,7 @@ class SignUp extends Component {
             </div>
           </div>
           <div>
-            <div>Login</div>
+            <div>Password</div>
             <div>
               <Input
                 id="password"
@@ -64,7 +64,7 @@ class SignUp extends Component {
             </div>
           </div>
           <div>
-            <Button onClick={this.onClick}>
+            <Button onClick={this.onSubmit}>
               Зарегистрироваться
             </Button>
           </div>
@@ -77,7 +77,4 @@ const mapStateToProps = (state) => ({
   dataForm: state.signUp.dataForm
 });
 
-export default connect(mapStateToProps, {
-  push,
-  ...Actions
-})(SignUp);
+export default connect(mapStateToProps, Actions)(SignUp);

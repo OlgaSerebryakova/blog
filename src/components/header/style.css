@@ -15,7 +15,7 @@
   display: inline-flex;
 }
 
-.link a {
+.link a, .auth  {
   display: inline-flex;
   color: white;
   text-align: center;
@@ -24,10 +24,10 @@
   font-weight: 600;
 }
 
-.link a:hover {
+.link a:hover, .auth:hover {
   color: #27aae1;
 }
 
-.link:hover {
+.link:hover, .auth:hover {
   background-color: #111;
 }

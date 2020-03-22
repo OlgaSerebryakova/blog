@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import Input from 'src/components/input';
 import Button from "src/components/button";
 import * as Actions from './actions';
-import { push } from 'connected-react-router';
 import style from './style.css';
 
 class SignIn extends Component {
   static propTypes = {
     dataForm: PropTypes.object.isRequired,
     changeFieldAction: PropTypes.func.isRequired,
+    signInAction: PropTypes.func.isRequired
   };
 
   // onClick = () => {
@@ -24,8 +24,9 @@ class SignIn extends Component {
   //   }
   // };
 
-  onClick = () => {
-    this.props.push('/');
+  onSubmit =() => {
+    const { dataForm } = this.props;
+    this.props.signInAction(dataForm);
   };
 
   render() {
@@ -58,7 +59,7 @@ class SignIn extends Component {
             </div>
           </div>
           <div>
-            <Button onClick={this.onClick} >
+            <Button onClick={this.onSubmit} >
               Войти
             </Button>
           </div>
@@ -73,7 +74,4 @@ const mapStateToProps = (state) => ({
   dataForm: state.signIn.dataForm
 });
 
-export default connect(mapStateToProps, {
-  push,
-  ...Actions
-})(SignIn);
+export default connect(mapStateToProps, Actions)(SignIn);
