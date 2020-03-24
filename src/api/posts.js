@@ -15,5 +15,11 @@ export function getPostById(id) {
   });
 }
 
-
+export function createNewPost(data) {
+  return axiosFetch({
+    url: 'posts/',
+    method: 'POST',
+    data
+  })
+}
 

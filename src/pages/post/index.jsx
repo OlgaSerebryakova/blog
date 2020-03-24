@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 import * as Actions from './actions';
 import style from './style.css';
 
 
 class PostPage extends Component {
+
+  static propTypes ={
+    getPostDataAction: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired
+  };
 
   componentDidMount() {
     const { match } = this.props;

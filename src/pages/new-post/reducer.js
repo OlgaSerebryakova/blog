@@ -1,7 +1,7 @@
 const initState = {
   dataForm: {
     title: '',
-    bodyPost: ''
+    content: ''
   }
 };
 
@@ -14,6 +14,10 @@ export default function newPostReducer(state = initState, action) {
           ...state.dataForm,
           [action.payload.fieldId]: action.payload.value
         }
+      };
+    case 'NEW_POST_CREATE_SUCCESS':
+      return {
+        ...initState
       };
     default:
       return state;
