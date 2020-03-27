@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: left;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: left;
+  margin: 10px 5px;
+}
+
+.counter {
+  padding: 0 10px;
+  font-size: 16px;
+}

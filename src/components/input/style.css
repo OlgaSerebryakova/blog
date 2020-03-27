@@ -10,3 +10,12 @@
   line-height: 30px;
   outline: none;
 }
+
+.inputError {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}

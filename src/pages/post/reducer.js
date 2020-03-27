@@ -9,6 +9,16 @@ export default function postReducer(state = initState, action) {
         ...state,
         data: action.payload
       };
+    case 'POST_PAGE_INCREASE_LIKE_SUCCESS':
+      return {
+        ...state,
+        data: action.payload
+      };
+    case 'POST_PAGE_INCREASE_DISLIKE_SUCCESS':
+      return {
+        ...state,
+        data: action.payload
+      };
     default:
       return state;
   }

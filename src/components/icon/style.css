@@ -1,0 +1,10 @@
+.iconWrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

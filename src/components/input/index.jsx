@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from "src/components/input/style.css";
+import style from "./style.css";
 
 export default class Input extends Component {
   onChange = (e) => {
@@ -9,16 +9,26 @@ export default class Input extends Component {
     onChange({ fieldId: id, value });
   };
 
+  onBlur = () => {
+    const { onBlur } = this.props;
+
+    onBlur && onBlur();
+  };
+
   render() {
-    const { value } = this.props;
+    const { value, error } = this.props;
 
     return (
-      <input
-        className={style.inputForm}
-        type="text"
-        value={value}
-        onChange={this.onChange}
-      />
+      <div>
+        <input
+          type="text"
+          value={value}
+          onChange={this.onChange}
+          onBlur={this.onBlur}
+          className={`${style.inputForm} ${ error ? style.inputError : ''}`}
+        />
+        <div className={style.error}>{error}</div>
+      </div>
     );
   }
 }

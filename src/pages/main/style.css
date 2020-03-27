@@ -21,6 +21,7 @@
   border-radius: 3px;
   margin-bottom: 20px;
   color: #777777;
+  white-space: pre;
 }
 
 .postTitle {
@@ -35,7 +36,6 @@
 
 .postLink:active, .postLink:visited {
   color: #27aae1;
-  //color: #39c8df;
 }
 
 .postLink:hover {
@@ -44,4 +44,15 @@
 
 .postContent {
   margin-top: 5px;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: left;
+}
+
+.author {
+  font-weight: 600;
+  color: #27aae1;
+  padding: 10px;
 }

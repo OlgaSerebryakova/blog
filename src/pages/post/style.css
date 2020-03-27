@@ -22,10 +22,30 @@
   border-radius: 3px;
   margin-bottom: 20px;
   color: #777777;
+  white-space: pre;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .postTitle {
   font-weight: bold;
   font-size: 16px;
   color: #27aae1;
+}
+
+.author {
+  font-weight: 600;
+  color: #27aae1;
+  display: flex;
+  justify-content: left;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
 }

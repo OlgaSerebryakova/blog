@@ -9,7 +9,7 @@ export default class Header extends Component {
           <ul className={style.wrapperUl}>
             <li className={style.link}><Link to="/">Главная</Link></li>
             <li className={style.link}><Link to="/about">О сайте</Link></li>
-            <li className={style.link}><Link to="/new-post">Новый пост</Link></li>
+            {this.props.user && <li className={style.link}><Link to="/new-post">Новый пост</Link></li>}
           </ul>
 
         {!this.props.user
