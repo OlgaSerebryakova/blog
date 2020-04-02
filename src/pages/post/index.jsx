@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import * as Actions from './actions';
 import style from './style.css';
 import LikeDislikeView from 'src/components/likeDislikeView';
+import {Link} from "react-router-dom";
 
 class PostPage extends Component {
 
@@ -43,7 +44,10 @@ class PostPage extends Component {
                       <img className={style.avatar}
                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRN7USRtFiSwwrfqNMPm_kTcGJ4NkIX7xRy4ztZq4Acm298JkWd" alt="avatar"/>
                     </div>
-                    <div>{data.author.login}</div>
+                    <div>
+                      <Link className={style.authorLink} to={`/user-page/${data.author.id}`}>
+                        {data.author.login}</Link>
+                      </div>
                   </div>
                   <div>
                     <LikeDislikeView

@@ -70,7 +70,7 @@ class SignUp extends Component {
             <div>
               <Input
                 id="lastName"
-                value={this.props.dataForm.firstName}
+                value={this.props.dataForm.lastName}
                 onChange={this.props.changeFieldAction}
                 error={errors.lastName}
               />

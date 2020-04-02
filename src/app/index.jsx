@@ -8,6 +8,7 @@ import SignUp from "src/pages/sign-up";
 import About from 'src/pages/about';
 import NewPost from 'src/pages/new-post';
 import Post from 'src/pages/post';
+import User from 'src/pages/user';
 import * as Actions from './actions';
 import './style.css';
 
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path='/' exact={true} component={Main}/>
           <Route path='/about' exact={true} component={About}/>
           {this.props.user && <Route path='/new-post' exact={true} component={NewPost}/>}
+          {this.props.user && <Route path='/user-page/:id' exact={true} component={User}/>}
           <Route path='/post/:id' exact={true} component={Post}/>
           <Route path='/sign-in' exact={true} component={SignIn}/>
           <Route path='/sign-up' exact={true} component={SignUp}/>
@@ -40,16 +42,6 @@ const mapStateToProps = (state) => {
     user: state.applicationReducer.user
   });
 };
-// const mapDispatchToProps = (dispatch) => {
-//   return ({
-//     dispatch: dispatch,
-//     increaseAction: (payload) => {
-//       dispatch(Actions.increaseAction(payload));
-//     },
-//     decreaseAction: (payload) => {
-//       dispatch(Actions.decreaseAction(payload));
-//     }
-//   });
-// };
+
 export default connect(mapStateToProps, Actions)(App);
 

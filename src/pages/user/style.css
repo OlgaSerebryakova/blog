@@ -1,0 +1,75 @@
+.wrapperUser {
+    position: relative;
+    background: aliceblue;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.containerUser {
+    position: absolute;
+    width: 800px;
+    top: 10%;
+    left: 50%;
+    margin-left: -400px;
+
+
+    background: #fff;
+    box-shadow: 0 0 35px rgba(0,0,0, .4);
+    border-radius: 10px;
+    min-height: 700px;
+}
+
+.titleUser {
+    position: relative;
+    height: 280px;
+    background-color: #3778A1;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+.avatarUser {
+    position: absolute;
+    left: 100px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 10px solid aliceblue;
+    overflow: hidden;
+}
+
+.userName {
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    color: aliceblue;
+}
+
+.infoUser {
+    margin: 30px 40px 10px 40px;
+}
+
+.userRow {
+    display: flex;
+}
+
+.userKey {
+    font-size: 16px;
+    color: #27aae1;
+}
+
+.userValue {
+    padding-left: 15px;
+}
+
+.userButton {
+    margin-left: 40px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}

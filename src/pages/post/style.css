@@ -22,7 +22,6 @@
   border-radius: 3px;
   margin-bottom: 20px;
   color: #777777;
-  white-space: pre;
 }
 
 .postHeader {
@@ -48,4 +47,15 @@
   width: 100px;
   height: 100px;
   margin-right: 10px;
+}
+
+.authorLink {
+  font-weight: 600;
+  color: #337ab7;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.authorLink:active, .authorLink:visited {
+  color: #27aae1;
 }

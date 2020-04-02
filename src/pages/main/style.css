@@ -21,7 +21,6 @@
   border-radius: 3px;
   margin-bottom: 20px;
   color: #777777;
-  white-space: pre;
 }
 
 .postTitle {
@@ -38,7 +37,7 @@
   color: #27aae1;
 }
 
-.postLink:hover {
+.postLink:hover, .authorLink:hover{
   color: #337ab7;
 }
 
@@ -51,8 +50,17 @@
   justify-content: left;
 }
 
-.author {
+.authorLink {
   font-weight: 600;
+  color: #337ab7;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.authorLink:active, .authorLink:visited {
   color: #27aae1;
+}
+
+.author {
   padding: 10px;
 }

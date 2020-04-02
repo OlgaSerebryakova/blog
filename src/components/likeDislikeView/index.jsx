@@ -7,10 +7,12 @@ import PropTypes from "prop-types";
 
 export default class LikeDislikeView extends Component {
 
-  // static propTypes = {
-  //   viewsCount: PropTypes.number,
-  //   onClick: PropTypes.func,
-  // };
+  static propTypes = {
+    viewsCount: PropTypes.number,
+    likesCount: PropTypes.number,
+    dislikesCount: PropTypes.number,
+    onClick: PropTypes.func,
+  };
 
   onClickLike = () => {
     this.props.onClickLike && this.props.onClickLike(this.props.id);

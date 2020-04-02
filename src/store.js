@@ -10,6 +10,7 @@ import signInReducer from 'src/pages/sign-in/reducer';
 import signUpReducer from 'src/pages/sign-up/reducer'
 import newPostReducer from "./pages/new-post/reducer";
 import postReducer from 'src/pages/post/reducer';
+import userReducer from 'src/pages/user/reducer';
 
 const logger = createLogger({
   collapsed: true
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   signIn: signInReducer,
   signUp: signUpReducer,
   newPost: newPostReducer,
-  post: postReducer
+  post: postReducer,
+  user: userReducer
 });
 
 const store = createStore(

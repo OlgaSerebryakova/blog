@@ -5,10 +5,16 @@ const initState  = {
 
 export default function mainPageReducer(state = initState, action) {
   switch (action.type) {
+    case 'MAIN_PAGE_INIT_GET_POSTS_REQUEST':
+      return {
+        ...state,
+        isLoadingPosts: true
+      };
     case 'MAIN_PAGE_INIT_GET_POSTS_SUCCESS':
       return {
         ...state,
-        posts: action.payload
+        posts: action.payload,
+        isLoadingPosts: false
       };
     case 'MAIN_PAGE_SCROLL_GET_POSTS_REQUEST':
       return {

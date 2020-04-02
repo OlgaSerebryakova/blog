@@ -70,7 +70,10 @@ class Main extends Component{
                     onClickLike={this.onClickLikeIncrease}
                     onClickDislike={this.onClickDislikeIncrease}
                   />
-                  <div className={style.author}>Автор: {postItem.author.login}</div>
+                  <div className={style.author}>
+                    <Link className={style.authorLink} to={`user-page/${postItem.author.id}`}>
+                      Автор: {postItem.author.login}</Link>
+                  </div>
                 </div>
               </div>
             )

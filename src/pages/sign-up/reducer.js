@@ -57,7 +57,6 @@ export default function singUpReducer(state = initState, action) {
           ...state.errors,
           login: action.payload.exists ? 'Такой логин уже занят' : ''
         }
-
       };
     case 'SIGN_UP_FAIL':
       return{

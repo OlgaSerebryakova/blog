@@ -13,18 +13,7 @@ class SignIn extends Component {
     signInAction: PropTypes.func.isRequired
   };
 
-  // onClick = () => {
-  //   switch (id) {
-  //     case 'buttonA':
-  //       console.log('Hello world');
-  //       break;
-  //     case 'buttonB':
-  //       this.props.push('/');
-  //       break;
-  //   }
-  // };
-
-  onSubmit =() => {
+  onSubmit = () => {
     const { dataForm } = this.props;
     this.props.signInAction(dataForm);
   };
