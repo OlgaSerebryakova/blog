@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import * as Actions from './actions';
 import style from './style.css';
 import LikeDislikeView from 'src/components/likeDislikeView';
+import Loading from 'src/components/icon/loading';
 import {Link} from "react-router-dom";
 
 class PostPage extends Component {
@@ -63,7 +64,7 @@ class PostPage extends Component {
                   <div className={style.postContent}>{data.content}</div>
               </div>
 
-            : <div>Загрузка...</div>
+            : <div><Loading size={50}/></div>
           }
         </div>
       </div>

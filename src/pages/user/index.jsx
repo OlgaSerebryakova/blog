@@ -7,6 +7,7 @@ import mapStateToProps from './selectors';
 import Button from "../../components/button";
 import Modal from "src/components/modal/";
 import Input from "../../components/input";
+import Loading from "../../components/icon/loading";
 
 
 class User extends Component {
@@ -108,7 +109,7 @@ class User extends Component {
                 </div>
               }
             </>
-            : <div>Загрузка...</div>
+            : <div><Loading size={50}/></div>
           }
 
         </div>

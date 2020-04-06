@@ -5,6 +5,7 @@ import * as Actions from './actions';
 import style from './style.css';
 import LikeDislikeView from "src/components/likeDislikeView";
 import PropTypes from "prop-types";
+import Loading from "../../components/icon/loading";
 
 class Main extends Component{
 
@@ -30,7 +31,7 @@ class Main extends Component{
   }
 
   onScroll = () => {
-    const { isLoadingPosts, posts, } = this.props;
+    const { isLoadingPosts, posts } = this.props;
     const NPosts = posts.length;
     const windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
 
@@ -55,29 +56,29 @@ class Main extends Component{
       <div className={style.postList}>
         <div className={style.postContainer}>
           {posts.map((postItem) => {
-            return (
-              <div className={style.postWrapper} key={postItem.id}>
-                <div className={style.postTitle}>
-                  <Link className={style.postLink} to={`post/${postItem.id}`}>{postItem.title}</Link>
-                </div>
-                <div className={style.postContent}>{postItem.content}</div>
-                <div className={style.postFooter}>
-                  <LikeDislikeView
-                    id={postItem.id}
-                    viewsCount={postItem.viewsCount}
-                    likesCount={postItem.likesCount}
-                    dislikesCount={postItem.dislikesCount}
-                    onClickLike={this.onClickLikeIncrease}
-                    onClickDislike={this.onClickDislikeIncrease}
-                  />
-                  <div className={style.author}>
-                    <Link className={style.authorLink} to={`user-page/${postItem.author.id}`}>
-                      Автор: {postItem.author.login}</Link>
+              return (
+                <div className={style.postWrapper} key={postItem.id}>
+                  <div className={style.postTitle}>
+                    <Link className={style.postLink} to={`post/${postItem.id}`}>{postItem.title}</Link>
+                  </div>
+                  <div className={style.postContent}>{postItem.content}</div>
+                  <div className={style.postFooter}>
+                    <LikeDislikeView
+                      id={postItem.id}
+                      viewsCount={postItem.viewsCount}
+                      likesCount={postItem.likesCount}
+                      dislikesCount={postItem.dislikesCount}
+                      onClickLike={this.onClickLikeIncrease}
+                      onClickDislike={this.onClickDislikeIncrease}
+                    />
+                    <div className={style.author}>
+                      <Link className={style.authorLink} to={`user-page/${postItem.author.id}`}>
+                        Автор: {postItem.author.login}</Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
         </div>
       </div>
     )
