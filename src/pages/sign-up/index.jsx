@@ -13,6 +13,10 @@ class SignUp extends Component {
     changeFieldAction: PropTypes.func.isRequired
   };
 
+  componentWillUnmount() {
+    this.props.clearSignUpUnmount();
+  }
+
   onSubmit = () => {
     const { dataForm } = this.props;
     this.props.signUpAction(dataForm);

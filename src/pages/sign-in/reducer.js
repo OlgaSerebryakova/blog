@@ -15,6 +15,10 @@ export default function signInReducer(state = initState, action) {
           [action.payload.fieldId]: action.payload.value
         }
       };
+    case 'CLEAR_SIGN-IN_SUCCESS':
+      return {
+        ...initState
+      };
     default:
       return state;
   }

@@ -18,6 +18,10 @@ class SignIn extends Component {
     this.props.signInAction(dataForm);
   };
 
+  componentWillUnmount() {
+    this.props.clearSignInUnmount();
+  }
+
   render() {
     return (
       <div className={style.wrapperSignIn}>

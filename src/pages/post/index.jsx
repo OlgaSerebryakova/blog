@@ -6,6 +6,13 @@ import style from './style.css';
 import LikeDislikeView from 'src/components/likeDislikeView';
 import Loading from 'src/components/icon/loading';
 import {Link} from "react-router-dom";
+import DeleteIcon from "../../components/icon/deleteIcon";
+import Confirm from "../../components/confirm";
+import Redact from 'src/components/icon/redPencil';
+import Modal from "../../components/modal";
+import Input from "../../components/input";
+import Textarea from "../../components/textarea";
+import Button from "../../components/button";
 
 class PostPage extends Component {
 
@@ -13,7 +20,13 @@ class PostPage extends Component {
     getPostDataAction: PropTypes.func.isRequired,
     increaseLikeCountAction: PropTypes.func.isRequired,
     increaseDislikeCountAction: PropTypes.func.isRequired,
-    data: PropTypes.object
+    openRedactPostAction: PropTypes.func,
+    closeRedactPostAction:  PropTypes.func,
+    redactPostAction: PropTypes.func,
+    data: PropTypes.object,
+    redactPost: PropTypes.object,
+    deletingPostId: PropTypes.string,
+    redactPostId: PropTypes.string
   };
 
   componentDidMount() {
@@ -31,8 +44,37 @@ class PostPage extends Component {
     this.props.increaseDislikeCountAction(match.params.id);
   };
 
+  onClickOpenModalDeletePost = (postId) => () => {
+    this.props.isShowModalOpenAction(postId);
+  };
+
+  onClickCloseModal = () => {
+    this.props.isShowModalCloseAction();
+  };
+
+  onDeletePost = () => {
+    this.props.deletePostAction(this.props.deletingPostId);
+  };
+
+  onClickOpenRedactPost = (post) => () => {
+    const redactPost = {
+      title: post.title,
+      content: post.content
+    };
+    const postId = post.id;
+    this.props.openRedactPostAction(redactPost, postId);
+  };
+
+  onSubmit = () => {
+    this.props.redactPostAction(this.props.redactPostId, this.props.redactPost);
+  };
+
+  onClickCloseRedactPost = () => {
+    this.props.closeRedactPostAction();
+  };
+
   render() {
-    const { data } = this.props;
+    const { data, deletingPostId, redactPostId, redactPost } = this.props;
 
     return(
       <div className={style.postPage}>
@@ -52,6 +94,8 @@ class PostPage extends Component {
                   </div>
                   <div>
                     <LikeDislikeView
+                      isLiked={data.relatedLikes.includes(this.props.user.id)}
+                      isDisliked={data.relatedDislikes.includes(this.props.user.id)}
                       viewsCount={data.viewsCount}
                       likesCount={data.likesCount}
                       dislikesCount={data.dislikesCount}
@@ -60,10 +104,59 @@ class PostPage extends Component {
                     />
                   </div>
                 </div>
-                  <div className={style.postTitle}>{data.title}</div>
-                  <div className={style.postContent}>{data.content}</div>
-              </div>
+                <div className={style.postTitle}>{data.title}</div>
+                <div className={style.postContent}>{data.content}</div>
 
+                {(!this.props.user || this.props.user.id !== data.author.id) ? '' :
+                  <div className={style.footer}>
+                    <div className={style.deletePost} onClick={this.onClickOpenModalDeletePost(data.id)}>
+                      <DeleteIcon size={20} />
+                    </div>
+                    <div onClick={this.onClickOpenRedactPost(data)}>
+                      <Redact size={20} />
+                    </div>
+                  </div>
+                }
+                {deletingPostId && <Confirm message={'Удалить пост?'}
+                    success={'Да'}
+                    cancel={'Нет'}
+                    onClickSuccess={this.onDeletePost}
+                    onClickCancel={this.onClickCloseModal} />
+                }
+                {redactPostId && <Modal >
+                  <div>
+                    <div>
+                      <div>Тема</div>
+                      <div>
+                        <Input
+                          id='title'
+                          value={redactPost.title}
+                          onChange={this.props.changeFieldAction}
+                        />
+                      </div>
+                    </div>
+                  <div>
+                    <div>Текс поста</div>
+                      <div>
+                        <Textarea
+                          id='content'
+                          value={redactPost.content}
+                          onChange={this.props.changeFieldAction}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className={style.buttonsWrapper}>
+                    <div className={style.buttonRedact}>
+                      <Button onClick={this.onSubmit}>Опубликовать изменения</Button>
+                    </div>
+                    <div className={style.buttonRedact}>
+                      <Button onClick={this.onClickCloseRedactPost}>Отмена</Button>
+                    </div>
+                  </div>
+                </Modal>
+                }
+          </div>
             : <div><Loading size={50}/></div>
           }
         </div>
@@ -74,7 +167,11 @@ class PostPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.post.data
+    data: state.post.data,
+    user: state.applicationReducer.user,
+    deletingPostId: state.post.deletingPostId,
+    redactPost: state.post.redactPost,
+    redactPostId: state.post.redactPostId
   }
 };
 

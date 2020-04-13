@@ -34,7 +34,6 @@ export const submitNewPasswordAction = (dataForm) => {
     try {
       dispatch({ type: 'USER_PAGE_MODAL_CHANGE_PASSWORD_REQUEST'});
       const response = await API.user.changePassword(dataForm);
-      console.log(response.data);
       if (response.data.error) {
         dispatch({ type:'USER_PAGE_MODAL_CHANGE_WRONG_PATH_FAIL', payload: response.data});
       } else {

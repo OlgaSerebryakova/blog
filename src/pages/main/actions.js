@@ -53,3 +53,29 @@ export const increaseDislikeCountAction = (id) => {
     }
   }
 };
+
+export const isShowModalOpenAction = (postId) => {
+  return ({
+    type: 'MAIN_PAGE_MODAL_OPEN_SUCCESS',
+    payload: postId
+  });
+};
+
+export const isShowModalCloseAction = () => {
+  return ({
+    type: 'MAIN_PAGE_MODAL_CLOSE_SUCCESS',
+  });
+};
+
+export const deletePostAction =(postId) => {
+  return async function(dispatch) {
+    try {
+      dispatch({ type: 'MAIN_PAGE_DELETE_POST_REQUEST' });
+      const response = await API.posts.deletePost(postId);
+      dispatch({ type: 'MAIN_PAGE_DELETE_POST_SUCCESS', payload: response.data });
+      dispatch(getPostsAction());
+    } catch (error) {
+      dispatch({ type: 'MAIN_PAGE_DELETE_POST_FAIL' });
+    }
+  }
+};

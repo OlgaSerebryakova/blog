@@ -21,6 +21,8 @@
   border-radius: 3px;
   margin-bottom: 20px;
   color: #777777;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .postTitle {
@@ -55,6 +57,7 @@
   color: #337ab7;
   padding: 10px;
   text-decoration: none;
+  white-space: pre;
 }
 
 .authorLink:active, .authorLink:visited {
@@ -63,4 +66,11 @@
 
 .author {
   padding: 10px;
+}
+
+.deletePost {
+    font-weight: 600;
+    color: #337ab7;
+    padding: 10px;
+    margin-left: 440px;
 }

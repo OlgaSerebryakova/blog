@@ -73,3 +73,13 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+.wrapperModal {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonsWrapper {
+    display: flex;
+    flex-direction: row;
+}

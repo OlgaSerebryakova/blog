@@ -1,0 +1,21 @@
+
+.confirmMessage {
+    text-align: center;
+    font-weight: bold;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.firstButton {
+
+    padding: 10px;
+}
+
+.secondButton {
+    min-width: 25px;
+    padding: 10px;
+}

@@ -47,6 +47,10 @@ class User extends Component {
     this.props.submitNewPasswordAction(dataForm);
   };
 
+  onClickOpenChangeDataModal = () => {
+    console.log('изменить данные')
+  };
+
   render() {
     const { data, errors, userInformation, showModal } = this.props;
     return (
@@ -72,10 +76,17 @@ class User extends Component {
                 </div>
               {this.props.user.id !== data.id ? '' :
                 <div className={style.userButton}>
-                  <Button onClick={this.onClickOpenModal}>Изменить пароль</Button>
+                  <div className={style.buttonsWrapper}>
+                    <div>
+                      <Button onClick={this.onClickOpenModal}>Изменить пароль</Button>
+                    </div>
+                    <div>
+                      <Button onClick={this.onClickOpenChangeDataModal}>Изменить данные</Button>
+                    </div>
+                  </div>
                   {
-                    showModal && <Modal closeModal={this.onClickSubmitNewPassword}>
-                        <div>
+                    showModal && <Modal>
+                        <div className={style.wrapperModal}>
                           <div className={style.closeButton} onClick={this.onClickCloseModal}>x</div>
                           <div>
                             <div>
@@ -103,6 +114,7 @@ class User extends Component {
                               />
                             </div>
                           </div>
+                          <Button onClick={this.onClickSubmitNewPassword}>Изменить</Button>
                         </div>
                     </Modal>
                   }

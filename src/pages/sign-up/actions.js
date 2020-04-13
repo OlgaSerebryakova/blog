@@ -31,3 +31,6 @@ export const checkLoginAction = (login) => {
     }
   }
 };
+
+
+export const clearSignUpUnmount = () => ({type: 'CLEAR_SIGN-IN_SUCCESS'});

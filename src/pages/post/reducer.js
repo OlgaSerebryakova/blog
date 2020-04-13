@@ -1,5 +1,8 @@
 const initState = {
-  data: null
+  data: null,
+  deletingPostId: '',
+  redactPostId: '',
+  redactPost: null
 };
 
 export default function postReducer(state = initState, action) {
@@ -19,6 +22,42 @@ export default function postReducer(state = initState, action) {
         ...state,
         data: action.payload
       };
+    case 'POST_PAGE_MODAL_OPEN_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: action.payload,
+      };
+    case 'POST_PAGE_MODAL_CLOSE_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: ''
+      };
+    case 'POST_PAGE_DELETE_POST_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: ''
+      };
+    case 'POST_PAGE_REDACT_CHANGE_DATA_FORM':
+      return {
+        ...state,
+        redactPost: {
+          ...state.redactPost,
+          [action.payload.fieldId]: action.payload.value
+        }
+      };
+    case 'POST_PAGE_OPEN_REDACT_POST_MODAL_SUCCESS':
+      return {
+        ...state,
+        redactPost: action.payload.redactPost,
+        redactPostId: action.payload.postId,
+      };
+    case 'POST_PAGE_CLOSE_REDACT_POST_MODAL_SUCCESS':
+      return {
+        ...state,
+        redactPostId: '',
+        redactPost: null
+      };
+
     default:
       return state;
   }

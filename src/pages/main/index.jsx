@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import * as Actions from './actions';
 import style from './style.css';
 import LikeDislikeView from "src/components/likeDislikeView";
+import DeleteIcon from "src/components/icon/deleteIcon";
 import PropTypes from "prop-types";
-import Loading from "../../components/icon/loading";
+import Confirm from "../../components/confirm";
 
 class Main extends Component{
 
@@ -17,6 +18,7 @@ class Main extends Component{
     unmountAction: PropTypes.func.isRequired,
     getScrollPostsAction: PropTypes.func.isRequired,
     isLoadingPosts: PropTypes.bool,
+    deletePostAction: PropTypes.func.isRequired
 
   };
 
@@ -48,9 +50,21 @@ class Main extends Component{
     this.props.increaseDislikeCountAction(id);
   };
 
+  onClickOpenModal = (postId) => () => {
+    this.props.isShowModalOpenAction(postId);
+  };
+
+  onClickCloseModal = () => {
+    this.props.isShowModalCloseAction();
+  };
+
+  onDeletePost = () => {
+    this.props.deletePostAction(this.props.deletingPostId);
+  };
+
 
   render() {
-    const { posts } = this.props;
+    const { posts, deletingPostId } = this.props;
 
     return(
       <div className={style.postList}>
@@ -63,18 +77,32 @@ class Main extends Component{
                   </div>
                   <div className={style.postContent}>{postItem.content}</div>
                   <div className={style.postFooter}>
-                    <LikeDislikeView
-                      id={postItem.id}
-                      viewsCount={postItem.viewsCount}
-                      likesCount={postItem.likesCount}
-                      dislikesCount={postItem.dislikesCount}
-                      onClickLike={this.onClickLikeIncrease}
-                      onClickDislike={this.onClickDislikeIncrease}
-                    />
+
+                      <LikeDislikeView
+                        id={postItem.id}
+                        isLiked={this.props.user ? postItem.relatedLikes.includes(this.props.user.id) : false}
+                        isDisliked={this.props.user ? postItem.relatedDislikes.includes(this.props.user.id) : false}
+                        viewsCount={postItem.viewsCount}
+                        likesCount={postItem.likesCount}
+                        dislikesCount={postItem.dislikesCount}
+                        onClickLike={this.onClickLikeIncrease}
+                        onClickDislike={this.onClickDislikeIncrease}
+                      />
                     <div className={style.author}>
                       <Link className={style.authorLink} to={`user-page/${postItem.author.id}`}>
-                        Автор: {postItem.author.login}</Link>
+                        Автор: { postItem.author.login }</Link>
                     </div>
+                    {(!this.props.user || this.props.user.id !== postItem.author.id) ? '' :
+                      <div className={style.deletePost} onClick={this.onClickOpenModal(postItem.id)}>
+                        <DeleteIcon size={20} />
+                      </div>
+                    }
+                    {deletingPostId && <Confirm message={'Удалить пост?'}
+                                            success={'Да'}
+                                            cancel={'Нет'}
+                                            onClickSuccess={this.onDeletePost}
+                                            onClickCancel={this.onClickCloseModal} />
+                    }
                   </div>
                 </div>
               )
@@ -88,7 +116,10 @@ class Main extends Component{
 const mapStateToProps = (state) => {
   return{
     posts: state.main.posts,
-    isLoadingPosts: state.main.isLoadingPosts
+    isLoadingPosts: state.main.isLoadingPosts,
+    user: state.applicationReducer.user,
+    showModal: state.main.showModal,
+    deletingPostId: state.main.deletingPostId
   }
 };
 

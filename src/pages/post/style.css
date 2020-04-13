@@ -4,6 +4,7 @@
   background: aliceblue;
   width: 100%;
   min-height: 100vh;
+  white-space: pre-wrap;
 }
 
 .postContainer {
@@ -22,6 +23,7 @@
   border-radius: 3px;
   margin-bottom: 20px;
   color: #777777;
+  word-wrap: break-word;
 }
 
 .postHeader {
@@ -59,3 +61,38 @@
 .authorLink:active, .authorLink:visited {
   color: #27aae1;
 }
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+
+.deletePost {
+  font-weight: 600;
+  color: #337ab7;
+  margin-right: 10px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttonRedact {
+  margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

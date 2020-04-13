@@ -20,6 +20,7 @@ export default class LikeDislikeView extends Component {
 
   onClickDislike = () => {
     this.props.onClickDislike && this.props.onClickDislike(this.props.id);
+
   };
 
   render() {
@@ -34,13 +35,13 @@ export default class LikeDislikeView extends Component {
         </div>
         <div className={style.iconWrapper}>
           <div onClick={this.onClickLike}>
-            <Like size={20}/>
+            <Like size={20} isActive={this.props.isLiked}/>
           </div>
           <div className={style.counter}>{this.props.likesCount}</div>
         </div>
         <div className={style.iconWrapper}>
           <div onClick={this.onClickDislike}>
-            <Dislike size={20}/>
+            <Dislike size={20} isActive={this.props.isDisliked}/>
           </div>
           <div className={style.counter}>{this.props.dislikesCount}</div>
         </div>

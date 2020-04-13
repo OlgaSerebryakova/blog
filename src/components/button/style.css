@@ -7,9 +7,10 @@
   position: relative;
   font-weight: 600;
   border-radius: 30px;
-  margin: 10px 0;
+  margin: 10px 10px 10px 0;
   height: 30px;
-  //outline: none;
+  outline: none;
+  min-width: 80px;
 }
 
 .button:hover {

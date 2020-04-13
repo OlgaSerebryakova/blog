@@ -59,9 +59,13 @@ export default function singUpReducer(state = initState, action) {
         }
       };
     case 'SIGN_UP_FAIL':
-      return{
+      return {
         ...state,
         errors: getFormErrors(action.payload)
+      };
+    case 'CLEAR_SIGN-IN_SUCCESS':
+      return {
+        ...initState
       };
     default:
       return state;

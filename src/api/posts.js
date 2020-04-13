@@ -37,3 +37,17 @@ export function increasePostDislike(id) {
   })
 }
 
+export function deletePost(id) {
+  return axiosFetch({
+    url: `posts/${id}`,
+    method: 'DELETE',
+  })
+}
+
+export function redactPost(id, data) {
+  return axiosFetch({
+    url: `posts/${id}`,
+    method: 'PUT',
+    data
+  })
+}

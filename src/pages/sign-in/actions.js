@@ -18,3 +18,5 @@ export const signInAction = (dataForm) => {
     }
   };
 };
+
+export const clearSignInUnmount = () => ({type: 'CLEAR_SIGN-IN_SUCCESS'});

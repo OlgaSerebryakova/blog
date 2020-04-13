@@ -1,6 +1,7 @@
 const initState  = {
   posts: [],
-  isLoadingPosts: false
+  isLoadingPosts: false,
+  deletingPostId: ''
 };
 
 export default function mainPageReducer(state = initState, action) {
@@ -45,6 +46,21 @@ export default function mainPageReducer(state = initState, action) {
       return{
         ...state,
         posts: state.posts.map(post => post.id === action.payload.id ? action.payload : post)
+      };
+    case 'MAIN_PAGE_MODAL_OPEN_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: action.payload,
+      };
+    case 'MAIN_PAGE_MODAL_CLOSE_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: ''
+      };
+    case 'MAIN_PAGE_DELETE_POST_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: ''
       };
     default:
       return state;

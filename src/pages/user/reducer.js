@@ -47,11 +47,19 @@ export default function userReducer(state = initState, action) {
         ...state,
         showModal: true
       };
-    case 'USER_PAGE_MODAL_CLOSE_SUCCESS':
     case 'USER_PAGE_MODAL_CHANGE_PASSWORD_CLOSE_SUCCESS':
       return {
         ...state,
-        showModal: false
+        showModal: false,
+        dataForm: { ...initState.dataForm },
+        errors: { ...initState.errors }
+      };
+    case 'USER_PAGE_MODAL_CLOSE_SUCCESS':
+      return {
+        ...state,
+        showModal: false,
+        dataForm: { ...initState.dataForm },
+        errors: { ...initState.errors }
       };
     case 'USER_PAGE_MODAL_CHANGE_DATA_FORM':
       return {
