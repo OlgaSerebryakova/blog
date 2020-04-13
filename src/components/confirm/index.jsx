@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import style from './style.css';
-import Button from "../button";
 import Modal from "src/components/modal/modal";
+import TwoButtons from "../twoButtons";
 
 export default class Confirm extends Component {
   render() {
     return(
       <div>
         <Modal>
-          <div className={style.wrapper}>
+          <div>
             <div className={style.confirmMessage}>{this.props.message}</div>
-            <div className={style.button}>
-              <div className={style.firstButton}>
-                <Button onClick={this.props.onClickSuccess}>{this.props.success}</Button>
-              </div>
-              <div className={style.secondButton}>
-                <Button onClick={this.props.onClickCancel}>{this.props.cancel}</Button>
-              </div>
+            <div>
+              <TwoButtons onClickSuccess={this.props.onClickSuccess}
+                          onClickCancel={this.props.onClickCancel}
+                          success={this.props.success}
+                          cancel={this.props.cancel}/>
             </div>
           </div>
         </Modal>

@@ -83,3 +83,8 @@
     display: flex;
     flex-direction: row;
 }
+
+.twoButtonsWrapper {
+    margin-top: 15px;
+}
+

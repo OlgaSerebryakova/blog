@@ -8,7 +8,14 @@ const initState = {
   errors: {
     currentPassword: '',
     newPassword: ''
-  }
+  },
+  infoForm: {
+    firstName: '',
+    lastName: '',
+    patronymic: '',
+    birthday: ''
+  },
+  userInfoId: ''
 };
 
 
@@ -85,6 +92,36 @@ export default function userReducer(state = initState, action) {
       return {
         ...state,
         errors: getFormErrors(action.payload)
+      };
+    case 'USER_PAGE_CHANGE_INFO_OPEN_SUCCESS':
+      return {
+        ...state,
+        userInfoId: state.data.id,
+        infoForm: {
+          firstName: state.data.firstName,
+          lastName: state.data.firstName,
+          patronymic: state.data.patronymic,
+          birthday: state.data.birthday
+        },
+      };
+    case 'USER_PAGE_CHANGE_INFO_CLOSE_SUCCESS':
+      return {
+        ...state,
+        userInfoId: '',
+        infoForm: { ...initState.infoForm }
+      };
+    case 'USER_PAGE_CHANGE_INFO_FORM':
+      return {
+        ...state,
+        infoForm: {
+          ...state.infoForm,
+          [action.payload.fieldId]: action.payload.value
+        }
+      };
+    case 'USER_PAGE_CHANGE_INFO_SUCCESS':
+      return {
+        ...state,
+        data: action.payload
       };
     default:
       return state;

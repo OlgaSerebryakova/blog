@@ -4,6 +4,7 @@ const dictionary = {
   firstName: 'Имя:',
   lastName: 'Фамилия:',
   patronymic: 'Отчество:',
+  birthday: 'Дата рождения',
   registrationDate: 'Дата регистрации:',
   email: 'E-mail:',
   postsCount: 'Количество постов:',
@@ -23,10 +24,16 @@ function userInfoSelector(userData) {
 
   // форматируем дату
   const userInfoDatePrepared = userDataListFilter.map(([key, value]) => {
-    const registrationDateValue = (key === 'registrationDate')
-      ? moment(value).format('DD.MM.YYYY')
-      : value;
-    return [key, registrationDateValue];
+    const momentDateObject = moment(new Date(value));
+    let preparedValue = value;
+
+    if (key === 'registrationDate' || key === 'birthday') {
+      preparedValue = momentDateObject.isValid()
+        ? momentDateObject.format('DD.MM.YYYY')
+        : value;
+    }
+
+    return [key, preparedValue];
   });
 
   // переводим ключи
@@ -40,13 +47,16 @@ function userInfoSelector(userData) {
   return translatedUserDataList;
 }
 
+
 const mapStateToProps = (state) => ({
   data: state.user.data,
   userInformation: userInfoSelector(state.user.data),
   user: state.applicationReducer.user,
   showModal: state.user.showModal,
   dataForm: state.user.dataForm,
-  errors: state.user.errors
+  errors: state.user.errors,
+  infoForm: state.user.infoForm,
+  userInfoId: state.user.userInfoId,
 });
 
 export default mapStateToProps;

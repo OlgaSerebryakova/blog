@@ -67,7 +67,7 @@ export const deletePostAction = (postId) => {
 export const openRedactPostAction = (redactPost, postId) => {
   return ({
     type: 'POST_PAGE_OPEN_REDACT_POST_MODAL_SUCCESS',
-    payload: {redactPost, postId},
+    payload: { redactPost, postId },
   });
 };
 

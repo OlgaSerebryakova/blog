@@ -43,7 +43,7 @@ export function checkLogin(login) {
 export function getUserById(id) {
   return axiosFetch({
     url: `users/${id}`,
-    method: 'GET',
+    method: 'GET'
   });
 }
 
@@ -53,4 +53,12 @@ export function changePassword(data) {
     method: 'PUT',
     data
   })
+}
+
+export function changeInfoUser(id, data) {
+  return axiosFetch({
+    url: `users/${id}`,
+    method: 'PUT',
+    data
+  });
 }

@@ -74,16 +74,6 @@
   margin-right: 10px;
 }
 
-.buttonsWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.buttonRedact {
-  margin: 0 10px;
-}
-
 
 
 

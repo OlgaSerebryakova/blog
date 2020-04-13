@@ -13,6 +13,7 @@ import Modal from "../../components/modal";
 import Input from "../../components/input";
 import Textarea from "../../components/textarea";
 import Button from "../../components/button";
+import TwoButtons from "../../components/twoButtons";
 
 class PostPage extends Component {
 
@@ -146,14 +147,10 @@ class PostPage extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className={style.buttonsWrapper}>
-                    <div className={style.buttonRedact}>
-                      <Button onClick={this.onSubmit}>Опубликовать изменения</Button>
-                    </div>
-                    <div className={style.buttonRedact}>
-                      <Button onClick={this.onClickCloseRedactPost}>Отмена</Button>
-                    </div>
-                  </div>
+                  <TwoButtons onClickSuccess={this.onSubmit}
+                              onClickCancel={this.onClickCloseRedactPost}
+                              success={'Опубликовать изменения'}
+                              cancel={'Отмена'}/>
                 </Modal>
                 }
           </div>

@@ -7,7 +7,9 @@ import mapStateToProps from './selectors';
 import Button from "../../components/button";
 import Modal from "src/components/modal/";
 import Input from "../../components/input";
+import InputDate from "../../components/input-date";
 import Loading from "../../components/icon/loading";
+import TwoButtons from "../../components/twoButtons";
 
 
 class User extends Component {
@@ -16,11 +18,18 @@ class User extends Component {
     data: PropTypes.object,
     dataForm: PropTypes.object.isRequired,
     errors: PropTypes.object,
+    infoForm: PropTypes.object,
+    showModal: PropTypes.bool,
+    userInfoId: PropTypes.string,
     getUserDataAction: PropTypes.func.isRequired,
     isShowModalOpenAction: PropTypes.func.isRequired,
     isShowModalCloseAction: PropTypes.func.isRequired,
     changeFieldAction: PropTypes.func.isRequired,
-    submitNewPasswordAction: PropTypes.func.isRequired
+    submitNewPasswordAction: PropTypes.func.isRequired,
+    isOpenChangeInfoModalAction: PropTypes.func.isRequired,
+    isCloseChangeInfoModalAction: PropTypes.func.isRequired,
+    changeFieldInfoAction: PropTypes.func.isRequired,
+    submitChangeInfoAction: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -47,12 +56,21 @@ class User extends Component {
     this.props.submitNewPasswordAction(dataForm);
   };
 
-  onClickOpenChangeDataModal = () => {
-    console.log('изменить данные')
+  onClickOpenChangeInfoModal = () => {
+    this.props.isOpenChangeInfoModalAction();
+  };
+
+  onClickCloseChangeInfoModal = () => {
+    this.props.isCloseChangeInfoModalAction();
+  };
+
+  onSubmitChangeInfo = () => {
+    const { userInfoId, infoForm } = this.props;
+    this.props.submitChangeInfoAction(userInfoId, infoForm);
   };
 
   render() {
-    const { data, errors, userInformation, showModal } = this.props;
+    const { data, errors, userInformation, showModal, userInfoId } = this.props;
     return (
       <div className={style.wrapperUser}>
         <div className={style.containerUser}>
@@ -81,7 +99,7 @@ class User extends Component {
                       <Button onClick={this.onClickOpenModal}>Изменить пароль</Button>
                     </div>
                     <div>
-                      <Button onClick={this.onClickOpenChangeDataModal}>Изменить данные</Button>
+                      <Button onClick={this.onClickOpenChangeInfoModal}>Изменить данные</Button>
                     </div>
                   </div>
                   {
@@ -117,6 +135,68 @@ class User extends Component {
                           <Button onClick={this.onClickSubmitNewPassword}>Изменить</Button>
                         </div>
                     </Modal>
+                  }
+                  { userInfoId &&
+                    <div>
+                      <Modal>
+                        <div className={style.wrapper}>
+                          <div>
+                            <div>Имя</div>
+                            <div>
+                              <Input
+                                id="firstName"
+                                value={this.props.infoForm.firstName}
+                                onChange={this.props.changeFieldInfoAction}
+                                error={errors.firstName}
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <div>Фамилия</div>
+                            <div>
+                              <Input
+                                id="lastName"
+                                value={this.props.infoForm.lastName}
+                                onChange={this.props.changeFieldInfoAction}
+                                error={errors.lastName}
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <div>
+                              <div>Отчество</div>
+                              <div>
+                                <Input
+                                  id="patronymic"
+                                  value={this.props.infoForm.patronymic}
+                                  onChange={this.props.changeFieldInfoAction}
+                                  error={errors.patronymic}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <div>
+                              <div>Дата рождения</div>
+                              <div>
+                                <InputDate
+                                  id="birthday"
+                                  value={this.props.infoForm.birthday}
+                                  onChange={this.props.changeFieldInfoAction}
+                                  error={errors.birthday}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className={style.twoButtonsWrapper}>
+                            <TwoButtons onClickSuccess={this.onSubmitChangeInfo}
+                            onClickCancel={this.onClickCloseChangeInfoModal}
+                            success={'Изменить'}
+                            cancel={'Отмена'}/>
+                          </div>
+                        </div>
+                      </Modal>
+                    </div>
                   }
                 </div>
               }
