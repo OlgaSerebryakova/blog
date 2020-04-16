@@ -23,6 +23,7 @@ class User extends Component {
     showModal: PropTypes.bool,
     userInfoId: PropTypes.string,
     getUserDataAction: PropTypes.func.isRequired,
+    getUserPostsAction: PropTypes.func.isRequired,
     isShowModalOpenAction: PropTypes.func.isRequired,
     isShowModalCloseAction: PropTypes.func.isRequired,
     changeFieldAction: PropTypes.func.isRequired,
@@ -34,7 +35,7 @@ class User extends Component {
   };
 
   componentDidMount() {
-    const { match } =this.props;
+    const { match } = this.props;
     this.props.getUserDataAction(match.params.id);
     this.props.getUserPostsAction(match.params.id);
     window.scrollTo({
@@ -46,8 +47,10 @@ class User extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { match } = this.props;
     if(prevProps.match.params.id !== this.props.match.params.id) {
-      this.props.getUserDataAction(this.props.match.params.id)
+      this.props.getUserDataAction(match.params.id);
+      this.props.getUserPostsAction(match.params.id);
     }
   }
 
