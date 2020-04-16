@@ -2,7 +2,7 @@ import axiosFetch from './axios';
 
 export function getList(params) {
   return axiosFetch({
-    url: 'posts/',
+    url: 'posts',
     method: 'GET',
     params
   });
@@ -50,4 +50,12 @@ export function redactPost(id, data) {
     method: 'PUT',
     data
   })
+}
+
+export function getFavoriteList(params) {
+  return axiosFetch({
+    url: 'posts/favourite/',
+    method: 'GET',
+    params
+  });
 }

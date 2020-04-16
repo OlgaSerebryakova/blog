@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import PostsFormation from "../../components/postsFormation";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as Actions from './actions';
+import style from './style.css';
+import LikeDislikeView from "src/components/likeDislikeView";
+import DeleteIcon from "src/components/icon/deleteIcon";
 import PropTypes from "prop-types";
-import PostsFormation from 'src/components/postsFormation';
+import Confirm from "../../components/confirm";
 
-class Main extends Component {
+class FavoritePosts extends Component{
 
   static propTypes ={
     increaseLikeCountAction: PropTypes.func.isRequired,
     increaseDislikeCountAction: PropTypes.func.isRequired,
     posts: PropTypes.array,
-    getPostsAction: PropTypes.func.isRequired,
+    getFavoritsPostsAction: PropTypes.func.isRequired,
     unmountAction: PropTypes.func.isRequired,
     getScrollPostsAction: PropTypes.func.isRequired,
     isLoadingPosts: PropTypes.bool,
@@ -19,7 +24,7 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    this.props.getPostsAction();
+    this.props.getFavoritsPostsAction();
     window.addEventListener('scroll', this.onScroll);
   }
 
@@ -63,26 +68,25 @@ class Main extends Component {
     const { posts, deletingPostId, user } = this.props;
 
     return(
-        <PostsFormation posts={posts} user={user}
-                        deletingPostId={deletingPostId}
-                        onClickDislikeIncrease={this.onClickDislikeIncrease}
-                        onClickLikeIncrease={this.onClickLikeIncrease}
-                        onClickOpenModal={this.onClickOpenModal}
-                        onClickCloseModal={this.onClickCloseModal}
-                        onDeletePost={this.onDeletePost}/>
+      <PostsFormation posts={posts} user={user}
+                      deletingPostId={deletingPostId}
+                      onClickDislikeIncrease={this.onClickDislikeIncrease}
+                      onClickLikeIncrease={this.onClickLikeIncrease}
+                      onClickOpenModal={this.onClickOpenModal}
+                      onClickCloseModal={this.onClickCloseModal}
+                      onDeletePost={this.onDeletePost}/>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return{
-    posts: state.main.posts,
-    isLoadingPosts: state.main.isLoadingPosts,
+    posts: state.favorite.posts,
+    isLoadingPosts: state.favorite.isLoadingPosts,
     user: state.applicationReducer.user,
-    showModal: state.main.showModal,
-    deletingPostId: state.main.deletingPostId
+    showModal: state.favorite.showModal,
+    deletingPostId: state.favorite.deletingPostId
   }
 };
 
-export default connect(mapStateToProps, Actions)(Main)
-
+export default connect(mapStateToProps, Actions)(FavoritePosts)

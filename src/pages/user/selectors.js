@@ -57,6 +57,10 @@ const mapStateToProps = (state) => ({
   errors: state.user.errors,
   infoForm: state.user.infoForm,
   userInfoId: state.user.userInfoId,
+
+  posts: state.user.posts,
+  isLoadingPosts: state.user.isLoadingPosts,
+  deletingPostId: state.user.deletingPostId
 });
 
 export default mapStateToProps;

@@ -79,3 +79,86 @@ export const submitChangeInfoAction = (id, infoForm) => {
     }
   }
 };
+
+
+// Получение постов
+
+export const getUserPostsAction = (id) => {
+  return async function(dispatch) {
+    try {
+      dispatch({type: 'USER_PAGE_INIT_GET_POSTS_REQUEST'});
+      const response = await API.posts.getList({offsetStep: 10, authorId: id});
+      dispatch({type: 'USER_PAGE_INIT_GET_POSTS_SUCCESS', payload: response.data });
+    } catch (error) {
+      dispatch({type: 'USER_PAGE_INIT_GET_POSTS_FAIL'});
+    }
+  }
+};
+
+export const getScrollPostsAction = (NPosts, id) => {
+  return async function(dispatch) {
+    try {
+      dispatch({type: 'USER_PAGE_SCROLL_GET_POSTS_REQUEST', payload: NPosts });
+      const response = await API.posts.getList({ offset: NPosts, offsetStep: 5, authorId: id});
+      dispatch({type: 'USER_PAGE_SCROLL_GET_POSTS_SUCCESS', payload: response.data });
+    } catch (error) {
+      dispatch({type: 'USER_PAGE_SCROLL_GET_POSTS_FAIL'});
+    }
+  }
+};
+
+export function unmountAction() {
+  return {
+    type: 'USER_PAGE_UNMOUNT'
+  }
+}
+
+export const increaseLikeCountAction = (id) => {
+  return async function(dispatch) {
+    try {
+      dispatch({ type: 'USER_PAGE_INCREASE_LIKE_REQUEST'});
+      const response = await API.posts.increasePostLike(id);
+      dispatch({ type: 'USER_PAGE_INCREASE_LIKE_SUCCESS', payload: response.data})
+    } catch (error) {
+      dispatch({ type: 'USER_PAGE_INCREASE_LIKE_FAIL'});
+    }
+  }
+};
+
+export const increaseDislikeCountAction = (id) => {
+  return async function(dispatch) {
+    try {
+      dispatch({ type: 'USER_PAGE_INCREASE_DISLIKE_REQUEST'});
+      const response = await API.posts.increasePostDislike(id);
+      dispatch({ type: 'USER_PAGE_INCREASE_DISLIKE_SUCCESS', payload: response.data})
+    } catch (error) {
+      dispatch({ type: 'USER_PAGE_INCREASE_DISLIKE_FAIL'});
+    }
+  }
+};
+
+export const isShowModalOpenDeletePostAction = (postId) => {
+  return ({
+    type: 'USER_PAGE_MODAL_OPEN_DELETE_POST_SUCCESS',
+    payload: postId
+  });
+};
+
+export const isShowModalCloseDeletePostAction = () => {
+  return ({
+    type: 'USER_PAGE_MODAL_CLOSE_DELETE_POST_SUCCESS',
+  });
+};
+
+export const deletePostAction =(postId) => {
+  return async function(dispatch) {
+    try {
+      dispatch({ type: 'USER_PAGE_DELETE_POST_REQUEST' });
+      const response = await API.posts.deletePost(postId);
+      dispatch({ type: 'USER_PAGE_DELETE_POST_SUCCESS', payload: response.data });
+      dispatch(getUserPostsAction());
+    } catch (error) {
+      dispatch({ type: 'USER_PAGE_DELETE_POST_FAIL' });
+    }
+  }
+};

@@ -1,4 +1,6 @@
-.wrapperUser {
+.wrapperPage {
+    display: flex;
+    justify-content: center;
     position: relative;
     background: aliceblue;
     width: 100%;
@@ -8,15 +10,17 @@
 .containerUser {
     position: absolute;
     width: 800px;
-    top: 10%;
+    top: 30px;
     left: 50%;
     margin-left: -400px;
-
-
     background: #fff;
     box-shadow: 0 0 35px rgba(0,0,0, .4);
     border-radius: 10px;
-    min-height: 700px;
+    min-height: 650px;
+}
+
+.containerPosts {
+    margin-top: 700px;
 }
 
 .titleUser {

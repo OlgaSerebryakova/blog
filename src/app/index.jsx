@@ -9,8 +9,10 @@ import About from 'src/pages/about';
 import NewPost from 'src/pages/new-post';
 import Post from 'src/pages/post';
 import User from 'src/pages/user';
+import FavoritePosts from "src/pages/favorite-posts";
 import * as Actions from './actions';
 import './style.css';
+
 
 
 
@@ -28,6 +30,7 @@ class App extends Component {
           <Route path='/' exact={true} component={Main}/>
           <Route path='/about' exact={true} component={About}/>
           {this.props.user && <Route path='/new-post' exact={true} component={NewPost}/>}
+          {this.props.user && <Route path='/favorite-posts' exact={true} component={FavoritePosts}/>}
           {this.props.user && <Route path='/user-page/:id' exact={true} component={User}/>}
           <Route path='/post/:id' exact={true} component={Post}/>
           <Route path='/sign-in' exact={true} component={SignIn}/>

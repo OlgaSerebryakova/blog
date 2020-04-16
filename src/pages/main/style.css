@@ -1,76 +1,76 @@
-.postList {
-  display: flex;
-  justify-content: center;
-  background: aliceblue;
-  width: 100%;
-}
+/*.postList {*/
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*background: aliceblue;*/
+  /*width: 100%;*/
+/*}*/
 
-.postContainer {
-  width: 900px;
-  background: #fff;
-  box-shadow: 0 0 35px rgba(0,0,0, .4);
-  padding: 40px;
-  border-radius: 0 0 6px 6px;
-  color: #27aae1;
-}
+/*.postContainer {*/
+  /*width: 900px;*/
+  /*background: #fff;*/
+  /*box-shadow: 0 0 35px rgba(0,0,0, .4);*/
+  /*padding: 40px;*/
+  /*border-radius: 0 0 6px 6px;*/
+  /*color: #27aae1;*/
+/*}*/
 
-.postWrapper {
-  background-color: #f8f8f8;
-  margin-left: 0;
-  padding: 20px;
-  border-radius: 3px;
-  margin-bottom: 20px;
-  color: #777777;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-}
+/*.postWrapper {*/
+  /*background-color: #f8f8f8;*/
+  /*margin-left: 0;*/
+  /*padding: 20px;*/
+  /*border-radius: 3px;*/
+  /*margin-bottom: 20px;*/
+  /*color: #777777;*/
+  /*word-wrap: break-word;*/
+  /*white-space: pre-wrap;*/
+/*}*/
 
-.postTitle {
-  font-weight: bold;
-  font-size: 16px;
-}
+/*.postTitle {*/
+  /*font-weight: bold;*/
+  /*font-size: 16px;*/
+/*}*/
 
-.postLink {
-  text-decoration: none;
-  color: #337ab7;
-}
+/*.postLink {*/
+  /*text-decoration: none;*/
+  /*color: #337ab7;*/
+/*}*/
 
-.postLink:active, .postLink:visited {
-  color: #27aae1;
-}
+/*.postLink:active, .postLink:visited {*/
+  /*color: #27aae1;*/
+/*}*/
 
-.postLink:hover, .authorLink:hover{
-  color: #337ab7;
-}
+/*.postLink:hover, .authorLink:hover{*/
+  /*color: #337ab7;*/
+/*}*/
 
-.postContent {
-  margin-top: 5px;
-}
+/*.postContent {*/
+  /*margin-top: 5px;*/
+/*}*/
 
-.postFooter {
-  display: flex;
-  justify-content: left;
-}
+/*.postFooter {*/
+  /*display: flex;*/
+  /*justify-content: left;*/
+/*}*/
 
-.authorLink {
-  font-weight: 600;
-  color: #337ab7;
-  padding: 10px;
-  text-decoration: none;
-  white-space: pre;
-}
+/*.authorLink {*/
+  /*font-weight: 600;*/
+  /*color: #337ab7;*/
+  /*padding: 10px;*/
+  /*text-decoration: none;*/
+  /*white-space: pre;*/
+/*}*/
 
-.authorLink:active, .authorLink:visited {
-  color: #27aae1;
-}
+/*.authorLink:active, .authorLink:visited {*/
+  /*color: #27aae1;*/
+/*}*/
 
-.author {
-  padding: 10px;
-}
+/*.author {*/
+  /*padding: 10px;*/
+/*}*/
 
-.deletePost {
-    font-weight: 600;
-    color: #337ab7;
-    padding: 10px;
-    margin-left: 440px;
-}
+/*.deletePost {*/
+    /*font-weight: 600;*/
+    /*color: #337ab7;*/
+    /*padding: 10px;*/
+    /*margin-left: 440px;*/
+/*}*/

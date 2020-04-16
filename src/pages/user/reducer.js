@@ -15,7 +15,10 @@ const initState = {
     patronymic: '',
     birthday: ''
   },
-  userInfoId: ''
+  userInfoId: '',
+  posts: [],
+  isLoadingPosts: false,
+  deletingPostId: ''
 };
 
 
@@ -122,6 +125,63 @@ export default function userReducer(state = initState, action) {
       return {
         ...state,
         data: action.payload
+      };
+      // Получение постов
+    case 'USER_PAGE_INIT_GET_POSTS_REQUEST':
+      return {
+        ...state,
+        isLoadingPosts: true
+      };
+    case 'USER_PAGE_INIT_GET_POSTS_SUCCESS':
+      return {
+        ...state,
+        posts: action.payload,
+        isLoadingPosts: false
+      };
+    case 'USER_PAGE_SCROLL_GET_POSTS_REQUEST':
+      return {
+        ...state,
+        isLoadingPosts: true
+      };
+    case 'USER_PAGE_SCROLL_GET_POSTS_FAIL':
+      return {
+        ...state,
+        isLoadingPosts: false
+      };
+    case 'USER_PAGE_SCROLL_GET_POSTS_SUCCESS':
+      return {
+        ...state,
+        posts: [...state.posts, ...action.payload],
+        isLoadingPosts: false
+      };
+    case 'USER_PAGE_UNMOUNT':
+      return {
+        ...initState
+      };
+    case 'USER_PAGE_INCREASE_LIKE_SUCCESS':
+      return {
+        ...state,
+        posts: state.posts.map(post => post.id === action.payload.id ? action.payload : post)
+      };
+    case 'USER_PAGE_INCREASE_DISLIKE_SUCCESS':
+      return{
+        ...state,
+        posts: state.posts.map(post => post.id === action.payload.id ? action.payload : post)
+      };
+    case 'USER_PAGE_MODAL_OPEN_DELETE_POST_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: action.payload,
+      };
+    case 'USER_PAGE_MODAL_CLOSE_DELETE_POST_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: ''
+      };
+    case 'USER_PAGE_DELETE_POST_SUCCESS':
+      return {
+        ...state,
+        deletingPostId: ''
       };
     default:
       return state;
