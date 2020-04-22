@@ -12,6 +12,7 @@ import newPostReducer from "./pages/new-post/reducer";
 import postReducer from 'src/pages/post/reducer';
 import userReducer from 'src/pages/user/reducer';
 import favoritePostReducer from 'src/pages/favorite-posts/reducer';
+import notifyReducer from 'src/components/notification/reducer';
 
 const logger = createLogger({
   collapsed: true
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   post: postReducer,
   user: userReducer,
   favorite: favoritePostReducer,
+  notify: notifyReducer
 });
 
 const store = createStore(

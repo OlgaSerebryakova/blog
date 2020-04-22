@@ -6,7 +6,7 @@ import PostsFormation from 'src/components/postsFormation';
 
 class Main extends Component {
 
-  static propTypes ={
+  static propTypes = {
     increaseLikeCountAction: PropTypes.func.isRequired,
     increaseDislikeCountAction: PropTypes.func.isRequired,
     posts: PropTypes.array,

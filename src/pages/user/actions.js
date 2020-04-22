@@ -1,4 +1,5 @@
 import API from 'src/api';
+import { showNotificationAction }  from 'src/components/notification/actions';
 
 export const getUserDataAction = (id) => {
   return async function(dispatch) {
@@ -38,6 +39,7 @@ export const submitNewPasswordAction = (dataForm) => {
         dispatch({ type:'USER_PAGE_MODAL_CHANGE_WRONG_PATH_FAIL', payload: response.data});
       } else {
         dispatch({ type:'USER_PAGE_MODAL_CHANGE_PASSWORD_SUCCESS', payload: response.data});
+        dispatch(showNotificationAction('Пароль успешно изменен'));
         dispatch({ type:'USER_PAGE_MODAL_CHANGE_PASSWORD_CLOSE_SUCCESS'})
       }
     } catch (error) {
@@ -74,6 +76,7 @@ export const submitChangeInfoAction = (id, infoForm) => {
       dispatch({ type: 'USER_PAGE_CHANGE_INFO_SUCCESS', payload: response.data });
       dispatch(isCloseChangeInfoModalAction());
       dispatch(getUserDataAction(id));
+      dispatch(showNotificationAction('Данные успешно изменены'));
     } catch (error) {
       dispatch({ type: 'USER_PAGE_CHANGE_INFO_FAIL'});
     }

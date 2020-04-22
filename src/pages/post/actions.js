@@ -1,6 +1,5 @@
 import API from 'src/api';
 import { push } from 'connected-react-router';
-import {getPostsAction} from "../main/actions";
 
 export const getPostDataAction = (id) => {
   return async function(dispatch) {

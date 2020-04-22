@@ -16,7 +16,7 @@ export default function PostsFormation ({ posts, deletingPostId, user,
             return (
               <div className={style.postWrapper} key={postItem.id}>
                 <div className={style.postTitle}>
-                  <Link className={style.postLink} to={`post/${postItem.id}`}>{postItem.title}</Link>
+                  <Link className={style.postLink} to={`/post/${postItem.id}`}>{postItem.title}</Link>
                 </div>
                 <div className={style.postContent}>{postItem.content}</div>
                 <div className={style.postFooter}>
@@ -32,7 +32,7 @@ export default function PostsFormation ({ posts, deletingPostId, user,
                       onClickDislike={onClickDislikeIncrease}
                     />
                   <div className={style.author}>
-                    <Link className={style.authorLink} to={`user-page/${postItem.author.id}`}>
+                    <Link className={style.authorLink} to={`/user-page/${postItem.author.id}`}>
                       Автор: { postItem.author.login }</Link>
                   </div>
                   {(!user || user.id !== postItem.author.id) ? '' :

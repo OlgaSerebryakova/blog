@@ -10,11 +10,9 @@ import NewPost from 'src/pages/new-post';
 import Post from 'src/pages/post';
 import User from 'src/pages/user';
 import FavoritePosts from "src/pages/favorite-posts";
+import Notify from 'src/components/notification'
 import * as Actions from './actions';
 import './style.css';
-
-
-
 
 class App extends Component {
 
@@ -25,6 +23,7 @@ class App extends Component {
   render() {
     return (
       <>
+        <Notify />
         <Header user={this.props.user} signOut={this.props.signOut}/>
         <Switch>
           <Route path='/' exact={true} component={Main}/>

@@ -12,7 +12,6 @@ import Loading from "../../components/icon/loading";
 import TwoButtons from "../../components/twoButtons";
 import PostsFormation from "../../components/postsFormation";
 
-
 class User extends Component {
 
   static propTypes ={
@@ -254,17 +253,17 @@ class User extends Component {
               : <div><Loading size={50}/></div>
             }
           </div>
-          <div className={style.containerPosts}>
-            { data && <PostsFormation posts={posts} user={user}
-                              deletingPostId={deletingPostId}
-                              onClickDislikeIncrease={this.onClickDislikeIncrease}
-                              onClickLikeIncrease={this.onClickLikeIncrease}
-                              onClickOpenModal={this.onClickOpenDeletePostModal}
-                              onClickCloseModal={this.onClickCloseDeletePostModal}
-                              onDeletePost={this.onDeletePost}/>
-            }
-
-          </div>
+          { posts.length !== 0 &&
+            <div className={style.containerPosts}>
+              <PostsFormation posts={posts} user={user}
+                                       deletingPostId={deletingPostId}
+                                       onClickDislikeIncrease={this.onClickDislikeIncrease}
+                                       onClickLikeIncrease={this.onClickLikeIncrease}
+                                       onClickOpenModal={this.onClickOpenDeletePostModal}
+                                       onClickCloseModal={this.onClickCloseDeletePostModal}
+                                       onDeletePost={this.onDeletePost}/>
+            </div>
+          }
         </div>
       </div>
     )

@@ -1,5 +1,6 @@
 import API from 'src/api';
 import { push } from 'connected-react-router';
+import {showNotificationAction} from "../../components/notification/actions";
 
 export const changeFieldAction = ({ fieldId, value }) => ({
   type: 'SIGN-UP_CHANGE_DATA_FORM',
@@ -12,6 +13,7 @@ export const signUpAction = (dataForm) => {
       dispatch({ type: 'SIGN-UP_REQUEST' });
       let response = await API.user.signUp(dataForm);
       dispatch({ type: 'SIGN-UP_SUCCESS', payload: response.data});
+      dispatch(showNotificationAction('Вы успешно зарегистрированы!'));
       dispatch(push('/'));
     } catch (error) {
       if (error.response) {

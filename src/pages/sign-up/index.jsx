@@ -10,7 +10,10 @@ import * as Actions from './actions';
 class SignUp extends Component {
   static propTypes = {
     dataForm: PropTypes.object.isRequired,
-    changeFieldAction: PropTypes.func.isRequired
+    changeFieldAction: PropTypes.func.isRequired,
+    clearSignUpUnmount: PropTypes.func.isRequired,
+    signUpAction: PropTypes.func.isRequired,
+    checkLoginAction: PropTypes.func.isRequired
   };
 
   componentWillUnmount() {
