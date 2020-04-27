@@ -1,4 +1,5 @@
 import API from 'src/api';
+import { showNotificationAction } from 'src/components/notification/actions';
 
 export const getPostsAction = () => {
   return async function(dispatch) {
@@ -73,6 +74,7 @@ export const deletePostAction =(postId) => {
       dispatch({ type: 'MAIN_PAGE_DELETE_POST_REQUEST' });
       const response = await API.posts.deletePost(postId);
       dispatch({ type: 'MAIN_PAGE_DELETE_POST_SUCCESS', payload: response.data });
+      dispatch(showNotificationAction('Пост удален!', 'success'));
       dispatch(getPostsAction());
     } catch (error) {
       dispatch({ type: 'MAIN_PAGE_DELETE_POST_FAIL' });

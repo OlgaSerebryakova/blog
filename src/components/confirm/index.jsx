@@ -5,6 +5,7 @@ import TwoButtons from "../twoButtons";
 
 export default class Confirm extends Component {
   render() {
+
     return(
       <div>
         <Modal>
@@ -14,7 +15,9 @@ export default class Confirm extends Component {
               <TwoButtons onClickSuccess={this.props.onClickSuccess}
                           onClickCancel={this.props.onClickCancel}
                           success={this.props.success}
-                          cancel={this.props.cancel}/>
+                          cancel={this.props.cancel}
+                          firstButtonType={'primary'}
+                          secondButtonType={'secondary'}/>
             </div>
           </div>
         </Modal>

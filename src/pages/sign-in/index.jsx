@@ -52,7 +52,7 @@ class SignIn extends Component {
             </div>
           </div>
           <div>
-            <Button onClick={this.onSubmit} >
+            <Button onClick={this.onSubmit} typeButton={'primary'}>
               Войти
             </Button>
           </div>

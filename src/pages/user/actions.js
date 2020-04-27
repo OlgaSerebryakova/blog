@@ -39,7 +39,7 @@ export const submitNewPasswordAction = (dataForm) => {
         dispatch({ type:'USER_PAGE_MODAL_CHANGE_WRONG_PATH_FAIL', payload: response.data});
       } else {
         dispatch({ type:'USER_PAGE_MODAL_CHANGE_PASSWORD_SUCCESS', payload: response.data});
-        dispatch(showNotificationAction('Пароль успешно изменен'));
+        dispatch(showNotificationAction('Пароль успешно изменен', 'success'));
         dispatch({ type:'USER_PAGE_MODAL_CHANGE_PASSWORD_CLOSE_SUCCESS'})
       }
     } catch (error) {
@@ -76,7 +76,7 @@ export const submitChangeInfoAction = (id, infoForm) => {
       dispatch({ type: 'USER_PAGE_CHANGE_INFO_SUCCESS', payload: response.data });
       dispatch(isCloseChangeInfoModalAction());
       dispatch(getUserDataAction(id));
-      dispatch(showNotificationAction('Данные успешно изменены'));
+      dispatch(showNotificationAction('Данные успешно изменены', 'success'));
     } catch (error) {
       dispatch({ type: 'USER_PAGE_CHANGE_INFO_FAIL'});
     }
@@ -160,6 +160,7 @@ export const deletePostAction =(postId) => {
       const response = await API.posts.deletePost(postId);
       dispatch({ type: 'USER_PAGE_DELETE_POST_SUCCESS', payload: response.data });
       dispatch(getUserPostsAction());
+      dispatch(showNotificationAction('Пост удален', 'success'));
     } catch (error) {
       dispatch({ type: 'USER_PAGE_DELETE_POST_FAIL' });
     }

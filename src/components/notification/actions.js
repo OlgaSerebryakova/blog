@@ -1,12 +1,7 @@
 
-
-export const showNotificationAction = (message) => ({
+export const showNotificationAction = (message, type) => ({
   type: 'ADD_NOTIFY',
-  payload: message
-});
-
-export const notShowNotificationAction = () => ({
-  type: 'SHOW_NOTIFY_FALSE'
+  payload: { message, type }
 });
 
 export const removeNotifyAction = (id) => ({

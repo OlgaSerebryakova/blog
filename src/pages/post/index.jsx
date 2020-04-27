@@ -150,7 +150,9 @@ class PostPage extends Component {
                   <TwoButtons onClickSuccess={this.onSubmit}
                               onClickCancel={this.onClickCloseRedactPost}
                               success={'Опубликовать изменения'}
-                              cancel={'Отмена'}/>
+                              cancel={'Отмена'}
+                              firstButtonType={'primary'}
+                              secondButtonType={'secondary'}/>
                 </Modal>
                 }
           </div>

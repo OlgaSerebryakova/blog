@@ -1,0 +1,47 @@
+.wrapper {
+  padding: 5px;
+  cursor: pointer;
+  margin: 6px;
+}
+
+.container {
+  position: relative;
+  height: 20px;
+  width: 50px;
+  border-radius: 12px;
+  transition: 300ms all ease-out;
+}
+
+.trigger {
+  position: absolute;
+  border-radius: 15px;
+  height: 30px;
+  width: 30px;
+  background: #2FDCDC;
+  transition: 300ms all ease-out;
+  top: -5px;
+}
+
+.trigger:hover {
+  box-shadow: 0 0 15px rgba(0,0,0, 0.4);
+}
+
+.Off {
+  left: 0;
+
+  background: #BDBDBD;
+}
+
+.On {
+  left: 20px;
+  background: #27aae1;
+}
+
+.containerOff {
+  background-color: #636363;
+}
+
+.containerOn {
+  background-color: #337ab7;
+}
+

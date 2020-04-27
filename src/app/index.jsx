@@ -10,7 +10,8 @@ import NewPost from 'src/pages/new-post';
 import Post from 'src/pages/post';
 import User from 'src/pages/user';
 import FavoritePosts from "src/pages/favorite-posts";
-import Notify from 'src/components/notification'
+import Notify from 'src/components/notification';
+import Components from 'src/components/Components'
 import * as Actions from './actions';
 import './style.css';
 
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path='/post/:id' exact={true} component={Post}/>
           <Route path='/sign-in' exact={true} component={SignIn}/>
           <Route path='/sign-up' exact={true} component={SignUp}/>
+          <Route path='/components' exact={true} component={Components}/>
         </Switch>
       </>
     );

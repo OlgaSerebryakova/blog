@@ -7,6 +7,7 @@ import Button from "src/components/button";
 import Textarea from "src/components/textarea";
 import style from './style.css';
 import { showNotificationAction } from 'src/components/notification/actions';
+import TwoButtons from "../../components/twoButtons";
 
 
 class Post extends Component {
@@ -21,7 +22,7 @@ class Post extends Component {
   onSubmit = () => {
     const { dataForm, createPostAction, showNotificationAction } = this.props;
     !dataForm.title || !dataForm.content
-      ? showNotificationAction('Введите тему и текст поста!')
+      ? showNotificationAction('Введите тему и текст поста!', 'warning')
       : createPostAction(dataForm);
   };
 
@@ -51,7 +52,7 @@ class Post extends Component {
             </div>
           </div>
           <div>
-            <Button onClick={this.onSubmit}>Опубликовать</Button>
+            <Button onClick={this.onSubmit} typeButton={'primary'}>Опубликовать</Button>
           </div>
         </div>
       </div>

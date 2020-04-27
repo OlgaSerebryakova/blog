@@ -7,17 +7,19 @@ export default class Button extends Component {
   static propTypes = {
     id: PropTypes.string,
     onClick: PropTypes.func,
-    children: PropTypes.string
+    children: PropTypes.string,
+    typeButton: PropTypes.string
   };
 
   onClick = () => {
-    this.props.onClick && this.props.onClick(this.props.id);
+    this.props.onClick && this.props.onClick(this.props.id)
   };
 
   render() {
     return(
       <div>
-        <button className={style.button} onClick={this.onClick}>{this.props.children}</button>
+        <button className={`${style.button} ${style[this.props.typeButton]}`}
+                onClick={this.onClick}>{this.props.children}</button>
       </div>
     )
   }

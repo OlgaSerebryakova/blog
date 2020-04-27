@@ -145,10 +145,10 @@ class User extends Component {
                   <div className={style.userButton}>
                     <div className={style.buttonsWrapper}>
                       <div>
-                        <Button onClick={this.onClickOpenModal}>Изменить пароль</Button>
+                        <Button onClick={this.onClickOpenModal} typeButton={'primary'}>Изменить пароль</Button>
                       </div>
                       <div>
-                        <Button onClick={this.onClickOpenChangeInfoModal}>Изменить данные</Button>
+                        <Button onClick={this.onClickOpenChangeInfoModal} typeButton={'primary'}>Изменить данные</Button>
                       </div>
                     </div>
                     {
@@ -181,7 +181,7 @@ class User extends Component {
                                 />
                               </div>
                             </div>
-                            <Button onClick={this.onClickSubmitNewPassword}>Изменить</Button>
+                            <Button onClick={this.onClickSubmitNewPassword} typeButton={'primary'}>Изменить</Button>
                           </div>
                       </Modal>
                     }
@@ -241,7 +241,10 @@ class User extends Component {
                               <TwoButtons onClickSuccess={this.onSubmitChangeInfo}
                               onClickCancel={this.onClickCloseChangeInfoModal}
                               success={'Изменить'}
-                              cancel={'Отмена'}/>
+                              cancel={'Отмена'}
+                              firstButtonType={'primary'}
+                              secondButtonType={'secondary'}
+                              />
                             </div>
                           </div>
                         </Modal>

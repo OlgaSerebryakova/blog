@@ -13,16 +13,18 @@ export default class ItemNotify extends Component {
 
   nowDeleteNotify = () => {
     clearTimeout(this.deleteNotify);
-    console.log('clear settimout', this.props.item.id);
     this.deleteNotify();
   };
 
 
   render() {
+    const { item } = this.props;
+    const { id, message, type } = item;
+
     return(
-      <div className={style.notify}>
-        <div>{this.props.item.message}</div>
-        <div className={style.closeNotify} onClick={this.nowDeleteNotify} >x</div>
+      <div className={`${style.notify} ${style[type]}`}>
+        <div>{message}</div>
+        <div className={style.closeNotify} onClick={this.nowDeleteNotify}>x</div>
       </div>
     )
   }

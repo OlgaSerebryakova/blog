@@ -1,0 +1,67 @@
+.wrapper {
+
+}
+
+.toggleTitle {
+  position: relative;
+
+}
+
+.toggleTitle h4 {
+  color: #3778A1;
+  padding-left: 33px;
+  display: inline;
+  cursor: pointer;
+}
+
+.toggleIcon {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  background-color: transparent;
+  height: 22px;
+  width: 22px;
+  border: 2px solid #3778A1;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.toggleIcon:before {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 10px;
+  background-color: #3778A1;
+  position: absolute;
+  top: 8px;
+  left: 4px;
+}
+
+.toggleIcon:after {
+  content: '';
+  display: block;
+  height: 10px;
+  width: 2px;
+  position: absolute;
+  visibility: hidden;
+  background-color: #3778A1;
+  top: 4px;
+  left: 8px;
+}
+
+.active.toggleIcon:after {
+  visibility: visible;
+}
+
+.toggleContent {
+  padding-left: 33px;
+}
+
+.On {
+  display: block;
+}
+
+.Off {
+  display: none;
+}
+

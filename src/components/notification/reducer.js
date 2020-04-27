@@ -1,12 +1,12 @@
 const initState = {
-  showNotify: false,
   list: [],
 };
 
 class NotificationItem {
-  constructor(message) {
+  constructor({ message, type }) {
     this.message = message;
     this.id = Math.random().toString();
+    this.type = type || 'success';
   }
 }
 

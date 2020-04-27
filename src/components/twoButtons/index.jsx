@@ -6,21 +6,25 @@ import Button from "../button";
 
 export default class TwoButtons extends Component {
   static propTypes = {
-    success: PropTypes.string,
-    cancel: PropTypes.string,
-    onClickSuccess: PropTypes.func,
-    onClickCancel: PropTypes.func,
+    success: PropTypes.string.isRequired,
+    cancel: PropTypes.string.isRequired,
+    onClickSuccess: PropTypes.func.isRequired,
+    onClickCancel: PropTypes.func.isRequired,
+    firstButtonType: PropTypes.string.isRequired,
+    secondButtonType: PropTypes.string.isRequired
   };
 
   render() {
+    const {onClickSuccess, onClickCancel, firstButtonType, secondButtonType, success, cancel } = this.props;
+
     return(
 
       <div className={style.buttonWrapper}>
         <div>
-          <Button onClick={this.props.onClickSuccess}>{this.props.success}</Button>
+          <Button onClick={onClickSuccess} typeButton={firstButtonType}>{success}</Button>
         </div>
         <div>
-          <Button onClick={this.props.onClickCancel}>{this.props.cancel}</Button>
+          <Button onClick={onClickCancel} typeButton={secondButtonType}>{cancel}</Button>
         </div>
       </div>
     )

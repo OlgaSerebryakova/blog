@@ -95,7 +95,7 @@ class SignUp extends Component {
             </div>
           </div>
           <div>
-            <Button onClick={this.onSubmit}>
+            <Button onClick={this.onSubmit} typeButton={'primary'}>
               Зарегистрироваться
             </Button>
           </div>

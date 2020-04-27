@@ -1,5 +1,5 @@
 .button {
-  background: #27aae1;
+  /*background: #27aae1;*/
   padding: 7px 25px;
   border: none;
   font-size: 14px;
@@ -16,3 +16,11 @@
 .button:hover {
    background: #337ab7;
  }
+
+.primary {
+  background: #27aae1;
+}
+
+.secondary {
+  background: #2FDCDC;
+}

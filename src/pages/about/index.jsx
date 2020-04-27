@@ -1,7 +1,10 @@
 import React, { Component} from 'react';
+import HoverBox from 'src/components/hoverBoxes';
 
 export default class About extends Component {
   render() {
-    return <h1>About this page</h1>
+    return (
+      <HoverBox/>
+    )
   }
 };
