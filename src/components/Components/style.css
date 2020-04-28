@@ -1,3 +1,8 @@
 .toggleWrapper {
     margin: 20px;
 }
+
+.inputWrapper {
+    margin: 20px;
+    width: 300px;
+}

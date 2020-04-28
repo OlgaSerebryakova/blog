@@ -1,20 +1,28 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
+import * as Actions from './actions';
 import Trigger from "../trigger";
 import Toggle from '../toggles';
 import style from './style.css'
 import Accordions from "../accordions";
 import { SelectClassic, Select } from "../select";
 import {SelectWithSearch} from "../selectWithSearch";
+import InputEmail from "../input-email";
+import { showNotificationAction } from 'src/components/notification/actions';
 
-export default function Components() {
+
+function Components(props) {
   const info = [
     { title:'Question1',
-    content: 'Appropriately supply distributed testing procedures via team driven leadership skills.',
-    widthContainer: 400 } ,
+      isOpen: false,
+      content: 'Appropriately supply distributed testing procedures via team driven leadership skills.',
+      widthContainer: 400 } ,
     { title:'Question2',
+      isOpen: false,
       content: 'Appropriately supply distributed testing procedures via team driven leadership skills.',
       widthContainer: 400 } ,
     { title:'Question3',
+      isOpen: false,
       content: 'Appropriately supply distributed testing procedures via team driven leadership skills.',
       widthContainer: 400 } ,
   ];
@@ -49,9 +57,7 @@ export default function Components() {
       url: '/new-post'},
     {text: 'Компоненты',
       url: '/components'},
-  ]
-
-  const [data, setData] = useState(info);
+  ];
 
   return(
     <div>
@@ -61,7 +67,7 @@ export default function Components() {
                 heightContainer={100} widthContainer={400} />
       </div>
       <div className={style.toggleWrapper}>
-        <Accordions data={data} setData={setData}/>
+        <Accordions info={info} />
       </div>
       <div className={style.toggleWrapper}>
         <SelectClassic list={list}/>
@@ -72,7 +78,21 @@ export default function Components() {
       <div className={style.toggleWrapper}>
         <SelectWithSearch list={menu} labelSelect={'Меню'} />
       </div>
+      <div className={style.inputWrapper}>
+        <div>Введите e-mail</div>
+        <InputEmail
+          id='email'
+          value={props.dataForm.email}
+          onChange={props.changeFieldAction}
+          showNotificationAction={props.showNotificationAction}/>
+      </div>
 
     </div>
   )
 }
+
+const mapStateToProps = (state) => ({
+  dataForm: state.components.dataForm
+});
+
+export default connect(mapStateToProps, {...Actions, showNotificationAction})(Components)
